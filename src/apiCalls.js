@@ -20,3 +20,9 @@ export function postTrick(newTrick) {
     body: JSON.stringify(newTrick)
   })
 }
+
+export function deleteTrick(id) {
+  return fetch(`http://localhost:3001/api/v1/tricks/${id}`, {
+    method: 'DELETE'
+  })
+}

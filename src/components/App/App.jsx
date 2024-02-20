@@ -23,7 +23,7 @@ function App() {
       <div>
       <h1>Sick Trick Wish List</h1>
         <Form addTrick={addTrick} />
-        <CardSection tricks={tricks} />
+        <CardSection addTrick={addTrick} tricks={tricks} />
       </div>
     </div>
   );
