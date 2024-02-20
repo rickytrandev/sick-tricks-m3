@@ -10,8 +10,8 @@ export function Form({ addTrick }) {
   function submitTrick(e) {
     e.preventDefault()
     const newTrick = {
+      name: trick,
       stance,
-      trick,
       obstacle,
       tutorial
     }
@@ -39,7 +39,7 @@ export function Form({ addTrick }) {
         <option value="Stairs">Stairs</option>
         <option value="Pool">Pool</option>
       </select>
-      <input value={tutorial} type="text" placeholder="Link to tutorial" name='link to tutorial' onChange={e => setTutorial(e.target.value)}/>
+      <input value={tutorial} type="text" placeholder="Link to tutorial" name='tutorial' onChange={e => setTutorial(e.target.value)}/>
       <button onClick={e => submitTrick(e)}>Send it!</button>
     </form>
   )
