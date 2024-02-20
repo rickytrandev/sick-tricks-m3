@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Form.css'
+import { postTrick } from '../../apiCalls'
 
 export function Form({ addTrick }) {
   const [stance, setStance] = useState('')
@@ -9,6 +10,7 @@ export function Form({ addTrick }) {
 
   function submitTrick(e) {
     e.preventDefault()
+    
     const newTrick = {
       name: trick,
       stance,
@@ -16,7 +18,19 @@ export function Form({ addTrick }) {
       tutorial
     }
 
-    addTrick(newTrick)
+    postTrick(newTrick)
+      .then(res => {
+        if (!res.ok) {
+          console.log(res.status);
+          throw new Error(res.status)
+        }
+        addTrick(newTrick)
+        return res.json()
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
     setStance('')
     setTrick('')
     setObstacle('')
